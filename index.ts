@@ -1,7 +1,7 @@
 import { of } from 'rxjs'; 
 import { fromEvent } from 'rxjs'; 
 import { paint } from './canvas.js';
-import { delay, debounceTime } from 'rxjs/operators';
+import { delay, debounceTime, tap } from 'rxjs/operators';
 //import { mergeMap, takeUntil, delay } from 'rxjs/operators';
  
 
@@ -9,7 +9,10 @@ import { delay, debounceTime } from 'rxjs/operators';
 // mouse$.subscribe(console.log);
 
 //const move$ = fromEvent(document, 'mousemove').pipe(delay(2000));
-const move$ = fromEvent(document, 'mousemove').pipe(debounceTime(1000));
+const move$ = fromEvent(document, 'mousemove').pipe(
+  //debounceTime(1000),
+  tap(paint)
+);
 
 // const down$ = fromEvent(document, 'mousedown')
 // const up$ = fromEvent(document, 'mouseup')
@@ -20,4 +23,5 @@ const move$ = fromEvent(document, 'mousemove').pipe(debounceTime(1000));
 
 // paints$.subscribe((v)=> paint(v));
 
-move$.subscribe((v)=> paint(v));
+//move$.subscribe((v)=> paint(v));
+move$.subscribe();
