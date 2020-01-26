@@ -1,14 +1,16 @@
 import { of } from 'rxjs'; 
 import { fromEvent } from 'rxjs'; 
 import { paint } from './canvas.js';
-import { delay } from 'rxjs/operators';
+import { delay, debounceTime } from 'rxjs/operators';
 //import { mergeMap, takeUntil, delay } from 'rxjs/operators';
  
 
 // const mouse$ = fromEvent(document, 'mousemove');
 // mouse$.subscribe(console.log);
 
-const move$ = fromEvent(document, 'mousemove').pipe(delay(2000));
+//const move$ = fromEvent(document, 'mousemove').pipe(delay(2000));
+const move$ = fromEvent(document, 'mousemove').pipe(debounceTime(1000));
+
 // const down$ = fromEvent(document, 'mousedown')
 // const up$ = fromEvent(document, 'mouseup')
 
