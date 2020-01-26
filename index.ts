@@ -1,7 +1,8 @@
 import { of } from 'rxjs'; 
 import { fromEvent } from 'rxjs'; 
 import { paint } from './canvas.js';
-import { mergeMap, takeUntil, delay } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
+//import { mergeMap, takeUntil, delay } from 'rxjs/operators';
  
 
 // const mouse$ = fromEvent(document, 'mousemove');
